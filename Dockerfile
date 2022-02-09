@@ -17,6 +17,7 @@ RUN pip install django-cors-headers
 RUN pip install python-decouple
 RUN pip install Pillow
 RUN pipenv install npm
+# RUN pipenv npm install react-router-dom redux redux-thunk react-redux redux-devtools-extension
 
 # RUN pipenv npm install @mui/material 
 
