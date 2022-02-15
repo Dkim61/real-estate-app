@@ -8,6 +8,8 @@ import {
     LOGOUT
 } from './types'
 
+const REACT_APP_API_URL = 'http://0.0.0.0:8000'
+
 export const login = (email, password) => async dispatch => {
     const config = {
         headers: {
@@ -18,7 +20,7 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/token/`, body, config);
+        const res = await axios.post(`${REACT_APP_API_URL}/api/token/`, body, config);
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -45,7 +47,7 @@ export const signup = ({ name, email, password, password2 }) => async dispatch =
     const body = JSON.stringify({ name, email, password, password2 }); 
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/accounts/signup`, body, config);
+        const res = await axios.post(`${REACT_APP_API_URL}/api/accounts/signup`, body, config);
 
         dispatch({
             type: SIGNUP_SUCCESS,
@@ -59,6 +61,7 @@ export const signup = ({ name, email, password, password2 }) => async dispatch =
         });
 
         dispatch(setAlert('Error Authenticating', 'error'));
+        console.log(`${process.env}`)
     }
 };
 
